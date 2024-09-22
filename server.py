@@ -3,6 +3,8 @@ from flask import request, Response
 
 import json
 
+from chatbot import Chatbot
+
 # Flask 인스터드 생성
 app = Flask(__name__)
 
@@ -40,7 +42,13 @@ def aidiary():
             context = conversation["context"]
             text = conversation["text"]
             
-            response = "response"
+            # chatbot
+            aichatbot = Chatbot()
+            user_input = text
+            print(user_input)
+            response = aichatbot.chat(user_input)
+            
+            # response = "response" # test
  
             content = f'''
                         <h2>
