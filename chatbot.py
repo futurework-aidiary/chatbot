@@ -33,7 +33,9 @@ print("mj-chatbot start")
 # response = chain.invoke({"input": "안녕"})
 
 # print(response.content)
-make_diary = "지금까지 대화한 내용만 포함해서 일기를 작성해줘. 맨 위에는 오늘 날짜와 기분을 적어주고, 그 아래에 대화내용을 담은 일기를 10살 아이와 같이 적어줘."
+make_diary = "지금까지 대화한 내용만 포함해서 일기를 작성해줘. \
+                맨 위에는 오늘 날짜와 기분을 적어주고, 그 아래에 대화내용을 담은 일기를 10살 아이와 같이 적어줘."
+
 while True:
     # 사용자 입력 받기
     user_input = input("You: ")
