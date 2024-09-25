@@ -1,7 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts import MessagesPlaceholder
-from langchain.schema.runnable import RunnablePassthrough
+from langchadin.schema.runnable import RunnablePassthrough
 from langchain.memory import ConversationBufferMemory
 # from langchain.memory import ConversationSummaryBufferMemory
 import os

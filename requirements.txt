@@ -1,0 +1,4 @@
+waitress
+langchain_core
+langchain
+langchain_core
