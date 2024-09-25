@@ -1,4 +1,4 @@
 waitress
-langchain_core
+flask
 langchain
-langchain_core
+langchain_openai

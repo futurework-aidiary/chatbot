@@ -1,5 +1,6 @@
 # 베이스 이미지
-FROM python:3.9
+FROM python:3.10
+
 
 # 작업 디렉토리 설정
 WORKDIR /chatbot
@@ -17,4 +18,4 @@ COPY . .
 EXPOSE 5000
 
 # wsgi로 실행. 이후 app 실행 (cmd 명령을 써놓은거)
-CMD ["waitress-serve", "--port=5000", "server:app"]
+CMD ["waitress-serve", "--port=5001", "server:app"]

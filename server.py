@@ -72,7 +72,7 @@ def aidiary():
             return ai_response
             
 if __name__ == '__main__':
-    serve(app, host="0.0.0.0", port=5000)
+    serve(app, host="0.0.0.0", port=5001)
     #app.run(debug = True, host = '0.0.0.0', port = 5000)
     # 플라스크는 localhost라고 알려진 루프백 주소 127.0.0.1을 사용: IP와 관계없이 내 컴퓨터를 지목할 수 있음
     # 0.0.0.0을 사용: 외부서버에서도 접속가능
