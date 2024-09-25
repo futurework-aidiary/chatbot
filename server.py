@@ -26,7 +26,7 @@ def web_template(content):
 def response_template(content):
     return content            
 
-# 127.0.0.1:5000/futurework/aidiary 으로 접근 
+# 127.0.0.1:5001/futurework/aidiary 으로 접근
 @app.route("/futurework/aidiary", methods=['POST'])
 
 def aidiary():
