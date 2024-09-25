@@ -9,7 +9,8 @@ from chatbot import Chatbot
 app = Flask(__name__)
 
 # Topic List
-topics = [{'id':'aidiary', 'title':'aidiary', 'body':'futurework/api'},]
+topics = [{'id':'message', 'title':'message', 'body':'ai/message'},
+          {'id':'diary', 'title':'diary', 'body':'ai/diary'},]
 
 # 출력 template
 def web_template(content):
@@ -27,7 +28,7 @@ def response_template(content):
     return content            
 
 # 127.0.0.1:5000/futurework/aidiary 으로 접근 
-@app.route("/futurework/aidiary", methods=['POST'])
+@app.route("/ai/message", methods=['POST'])
 
 def aidiary():
     if request.method == 'POST':
@@ -61,16 +62,60 @@ def aidiary():
                         '''       
             
             # result 불러오기
-            ai_response = {
-                "ai_response": response
+            botresponse = {
+                "botresponse": response
                 # "file" : open(f'{output_result}', 'r')
             }
 
-            ai_response = Response(json.dumps(response_template(ai_response), ensure_ascii=False))
-            ai_response.headers['Content-Type'] = 'application/json'
+            botresponse = Response(json.dumps(response_template(botresponse), ensure_ascii=False))
+            botresponse.headers['Content-Type'] = 'application/json'
                 
-            return ai_response
+            return botresponse
             
+            
+# 127.0.0.1:5000/futurework/aidiary 으로 접근 
+@app.route("/ai/diary", methods=['POST'])
+
+def aidiary():
+    if request.method == 'POST':
+        # 대화를 전달받음
+        conversation = request.get_json()
+        if not conversation:
+            raise ValueError
+                
+    for topic in topics:
+        if(topic["id"] == 'aidiary'):
+            
+            text = conversation["text"]
+            
+            # chatbot
+            aichatbot = Chatbot()
+            user_input = text
+            print(user_input)
+            response = aichatbot.chat(user_input)
+            
+            # response = "response" # test
+ 
+            content = f'''
+                        <h2>
+                        {topic["title"]}
+                        </h2>
+                        {topic["body"]}<br><br>
+                        text : {text}<br>
+                        response : {response}<br>
+                        '''       
+            
+            # result 불러오기
+            botdiary = {
+                "context": response
+                # "file" : open(f'{output_result}', 'r')
+            }
+
+            botdiary = Response(json.dumps(response_template(botdiary), ensure_ascii=False))
+            botdiary.headers['Content-Type'] = 'application/json'
+                
+            return botdiary
+        
 if __name__ == '__main__':
     app.run(debug = True, host = '0.0.0.0', port = 5000)
     # 플라스크는 localhost라고 알려진 루프백 주소 127.0.0.1을 사용: IP와 관계없이 내 컴퓨터를 지목할 수 있음
