@@ -10,7 +10,7 @@ print("chatbot start")
 
 # OpenAI API Key
 # project-aidiary
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "<Key>"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # LLM
